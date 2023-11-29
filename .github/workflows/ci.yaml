@@ -39,7 +39,7 @@ jobs:
         id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
-          image: "${{ vars.QUAY_REPOSITORY }}"
+          image: "${{ vars.QUAY_IMAGE_NAME }}"
           tags: ${{ github.event.pull_request && format('pr-{0}', github.event.pull_request.number) || format('latest {0}', github.sha) }}
           containerfiles: |
             ./src/main/docker/Dockerfile.jvm
@@ -50,7 +50,7 @@ jobs:
         with:
           image: "${{ steps.build-image.outputs.image }}"
           tags: "${{ steps.build-image.outputs.tags }}"
-          registry: "quay.io/${{ vars.QUAY_USER }}"
+          registry: "quay.io/${{ vars.QUAY_REPOSITORY }}"
           username: "${{ vars.QUAY_USER }}"
           password: "${{ secrets.QUAY_PASSWORD }}"
 
