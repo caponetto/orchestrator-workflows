@@ -11,11 +11,9 @@ concurrency:
   group: ${{ github.event.pull_request && format('ci-pr-{0}', github.event.pull_request.number) || format('ci-push-main-{0}', github.sha) }}
   cancel-in-progress: true
 
-env:
-  QUAY_USER: caponetto
-
 jobs:
   ci:
+    environment: ci
     runs-on: ubuntu-latest
     steps:
       - name: "Setup JDK 11"
@@ -24,14 +22,14 @@ jobs:
           java-version: 11
           distribution: "zulu"
 
-      - name: "Cache Maven packages (Ubuntu only - see comments in source)"
+      - name: "Cache Maven packages"
         uses: actions/cache@v3
         with:
           path: ~/.m2
           key: m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: m2
 
-      - name: "Checkout @ GitHub default"
+      - name: "Checkout"
         uses: actions/checkout@v4
 
       - name: "Build project"
@@ -41,19 +39,19 @@ jobs:
         id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
-          image: "orchestrator-workflows"
+          image: "${{ vars.QUAY_REPOSITORY }}"
           tags: ${{ github.event.pull_request && format('pr-{0}', github.event.pull_request.number) || format('latest {0}', github.sha) }}
           containerfiles: |
             ./src/main/docker/Dockerfile.jvm
 
-      - name: Push To quay.io
+      - name: "Push To quay.io"
         id: push-to-quay
         uses: redhat-actions/push-to-registry@v2
         with:
           image: "${{ steps.build-image.outputs.image }}"
           tags: "${{ steps.build-image.outputs.tags }}"
-          registry: "quay.io/${{ env.QUAY_USER }}"
-          username: "${{ env.QUAY_USER }}"
+          registry: "quay.io/${{ vars.QUAY_USER }}"
+          username: "${{ vars.QUAY_USER }}"
           password: "${{ secrets.QUAY_PASSWORD }}"
 
       - name: "Print image names"
