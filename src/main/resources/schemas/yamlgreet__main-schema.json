@@ -1,0 +1,12 @@
+{
+  "$id": "classpath:/schemas/yamlgreet__main-schema.json",
+  "title": "Data Input Schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "yamlgreet__ref-schema__Input_data.json": {
+      "$ref": "yamlgreet__ref-schema__Input_data.json",
+      "type": "object"
+    }
+  }
+}

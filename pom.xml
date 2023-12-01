@@ -15,10 +15,26 @@
     <quarkus.platform.version>2.16.12.Final</quarkus.platform.version>
     <kogito.bom.group-id>org.kie.kogito</kogito.bom.group-id>
     <kogito.bom.artifact-id>kogito-bom</kogito.bom.artifact-id>
-    <kogito.bom.version>1.44.1.Final</kogito.bom.version>
+    <kogito.bom.version>2.0.0-SNAPSHOT</kogito.bom.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
   </properties>
+  <repositories>
+    <repository>
+        <id>apache-public-repository-group</id>
+        <name>Apache Public Repository Group</name>
+        <url>https://repository.apache.org/content/groups/public/</url>
+        <layout>default</layout>
+        <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>
+        </snapshots>
+    </repository>
+  </repositories>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -38,6 +54,18 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-addons-quarkus-process-management</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-addons-quarkus-source-files</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-addons-quarkus-data-index-inmemory</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.kie.kogito</groupId>
       <artifactId>kogito-quarkus-serverless-workflow</artifactId>
