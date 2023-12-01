@@ -56,3 +56,15 @@ jobs:
 
       - name: "Print image names"
         run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
+
+      - name: "Add comment to the PR"
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'The image is available at: ${{ steps.push-to-quay.outputs.registry-paths }}'
+            })
