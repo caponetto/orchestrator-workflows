@@ -1,0 +1,73 @@
+{
+  "$id": "classpath:/schemas/quarkus-backend__ref-schema__CI_Method.json",
+  "title": "Provide information about the CI method",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "ci": {
+      "title": "CI Method",
+      "default": "github",
+      "enum": [
+        "github",
+        "tekton"
+      ],
+      "enumNames": [
+        "GitHub",
+        "Tekton"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "ci": {
+            "const": "github"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "ci": {
+            "const": "tekton"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "imageRepository": {
+            "title": "Image Registry",
+            "description": "The registry to use",
+            "type": "string",
+            "default": "quay.io",
+            "enum": [
+              "quay.io",
+              "image-registry.openshift-image-registry.svc:5000"
+            ],
+            "enumNames": [
+              "Quay",
+              "Internal OpenShift Registry"
+            ]
+          },
+          "imageUrl": {
+            "title": "Image URL",
+            "description": "The Quay.io or OpenShift Image URL <REGISTRY>/<IMAGE_URL>/<REPO_NAME>",
+            "type": "string"
+          },
+          "namespace": {
+            "title": "Namespace",
+            "description": "The namespace for deploying resources",
+            "type": "string"
+          }
+        },
+        "required": [
+          "namespace",
+          "imageUrl",
+          "imageRepository"
+        ]
+      }
+    }
+  ]
+}
