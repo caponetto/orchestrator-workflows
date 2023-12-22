@@ -1,5 +1,5 @@
 {
-  "$id": "classpath:/schemas/nodejs-backend__ref-schema__New_Component.json",
+  "$id": "classpath:/schemas/spring-boot-backend__ref-schema__New_Component.json",
   "title": "Provide information about the new component",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
@@ -33,7 +33,7 @@
       "title": "Port",
       "description": "Override the port exposed for the application",
       "type": "number",
-      "default": "3000"
+      "default": "8080"
     }
   },
   "required": [

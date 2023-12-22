@@ -1,9 +1,9 @@
-id: quarkus-backend
+id: spring-boot-backend
 version: '1.0'
 specVersion: '0.8'
-name: Quarkus Backend application
-description: Create a starter Quarkus backend application with a CI pipeline
-dataInputSchema: schemas/quarkus-backend__main-schema.json
+name: Spring Boot Backend application
+description: Create a starter Spring Boot backend application with a CI pipeline
+dataInputSchema: schemas/spring-boot-backend__main-schema.json
 functions:
   - name: runActionFetchTemplate
     operation: specs/actions-openapi.json#fetch:template
@@ -30,7 +30,7 @@ states:
           refName: runActionFetchTemplate
           arguments:
             url: >-
-              https://github.com/janus-idp/software-templates/tree/main/templates/github/quarkus-backend/skeleton
+              https://github.com/janus-idp/software-templates/tree/main/templates/github/spring-boot-backend/skeleton
             values:
               orgName: .orgName
               repoName: .repoName
