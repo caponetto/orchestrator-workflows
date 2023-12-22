@@ -1,5 +1,5 @@
 {
-  "$id": "classpath:/schemas/go-backend__ref-schema__CI_Method.json",
+  "$id": "classpath:/schemas/spring-boot-backend__ref-schema__CI_Method.json",
   "title": "Provide information about the CI method",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",

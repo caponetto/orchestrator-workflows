@@ -1,5 +1,5 @@
 {
-  "$id": "classpath:/schemas/quarkus-backend__ref-schema__Java_Metadata.json",
+  "$id": "classpath:/schemas/spring-boot-backend__ref-schema__Java_Metadata.json",
   "title": "Provide information about the Java metadata",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
@@ -14,13 +14,13 @@
       "title": "Artifact ID",
       "description": "Maven Artifact ID",
       "type": "string",
-      "default": "quarkusapp"
+      "default": "spring-boot-app"
     },
     "javaPackageName": {
       "title": "Java Package Namespace",
       "description": "Name for the Java Package (ensure to use the / character as this is used for folder structure) should match Group ID and Artifact ID",
       "type": "string",
-      "default": "io/janus/quarkusapp"
+      "default": "io/janus/spring-boot-app"
     },
     "version": {
       "title": "Version",
