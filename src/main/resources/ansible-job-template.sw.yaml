@@ -33,7 +33,6 @@ states:
                 id: $WORKFLOW.instanceId
                 url: >-
                   https://github.com/janus-idp/software-templates/tree/main/templates/github/launch-ansible-job/skeleton
-                targetPath: source/
                 values:
                   name: ${.name}
                   jobTemplate: ${.jobTemplate}
@@ -50,7 +49,6 @@ states:
                 id: $WORKFLOW.instanceId
                 url: >-
                   https://github.com/janus-idp/software-templates/tree/main/skeletons/catalog-info
-                targetPath: catalog/
                 values:
                   githubOrg: ${.githubOrg}
                   repoName: ${.repoName}
@@ -112,8 +110,7 @@ states:
           refName: fs:delete
           arguments:
             files:
-              - source/
-              - catalog/
+              - ./
   - name: Remove Source Code Repository
     type: operation
     usedForCompensation: true
