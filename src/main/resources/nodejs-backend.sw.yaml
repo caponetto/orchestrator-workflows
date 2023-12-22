@@ -1,9 +1,9 @@
-id: quarkus-backend
+id: nodejs-backend
 version: '1.0'
 specVersion: '0.8'
-name: Quarkus Backend application
-description: Create a Quarkus Backend application with a CI pipeline
-dataInputSchema: schemas/quarkus-backend__main-schema.json
+name: Node.js Backend application
+description: Create a starter Node.js backend application with a CI pipeline
+dataInputSchema: schemas/nodejs-backend__main-schema.json
 functions:
   - name: runActionFetchTemplate
     operation: specs/actions-openapi.json#fetch:template
@@ -30,7 +30,7 @@ states:
           refName: runActionFetchTemplate
           arguments:
             url: >-
-              https://github.com/janus-idp/software-templates/tree/main/templates/github/quarkus-backend/skeleton
+              https://github.com/janus-idp/software-templates/tree/main/templates/github/nodejs-backend/skeleton
             values:
               orgName: .orgName
               repoName: .repoName
@@ -42,9 +42,6 @@ states:
               port: .port
               ci: .ci
               sourceControl: github.com
-              groupId: .groupId
-              artifactId: .artifactId
-              javaPackageName: .javaPackageName
         actionDataFilter:
           toStateData: .actionFetchTemplateSourceCodeResult
     onErrors:
@@ -84,9 +81,6 @@ states:
               port: .port
               ci: .ci
               sourceControl: github.com
-              groupId: .groupId
-              artifactId: .artifactId
-              javaPackageName: .javaPackageName
         actionDataFilter:
           toStateData: .actionTemplateFetchCIResult
     onErrors:
@@ -116,13 +110,10 @@ states:
               namespace: .namespace
               imageUrl: .imageUrl
               imageRepository: .imageRepository
-              imageBuilder: s2i-java
+              imageBuilder: s2i-nodejs
               port: .port
               ci: .ci
               sourceControl: github.com
-              groupId: .groupId
-              artifactId: .artifactId
-              javaPackageName: .javaPackageName
         actionDataFilter:
           toStateData: .actionTemplateFetchCIResult
     onErrors:
@@ -149,13 +140,10 @@ states:
               namespace: .namespace
               imageUrl: imageUrl
               imageRepository: .imageRepository
-              imageBuilder: s2i-go
+              imageBuilder: s2i-nodejs
               port: .port
               ci: .ci
               sourceControl: github.com
-              groupId: .groupId
-              artifactId: .artifactId
-              javaPackageName: .javaPackageName
         actionDataFilter:
           toStateData: .actionFetchTemplateCatalogInfoResult
     onErrors:

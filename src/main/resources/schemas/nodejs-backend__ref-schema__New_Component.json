@@ -1,5 +1,5 @@
 {
-  "$id": "classpath:/schemas/quarkus-backend__ref-schema__New_Component.json",
+  "$id": "classpath:/schemas/nodejs-backend__ref-schema__New_Component.json",
   "title": "Provide information about the new component",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",

@@ -32,7 +32,7 @@ states:
             url: >-
               https://github.com/janus-idp/software-templates/tree/main/templates/github/go-backend/skeleton
             values:
-              githubOrg: .githubOrg
+              orgName: .orgName
               repoName: .repoName
               owner: .owner
               system: .system
@@ -71,7 +71,7 @@ states:
             copyWithoutTemplating:
               - '".github/workflows/"'
             values:
-              githubOrg: .githubOrg
+              orgName: .orgName
               repoName: .repoName
               owner: .owner
               system: .system
@@ -101,7 +101,7 @@ states:
             copyWithoutTemplating:
               - '".github/workflows/"'
             values:
-              githubOrg: .githubOrg
+              orgName: .orgName
               repoName: .repoName
               owner: .owner
               system: .system
@@ -131,7 +131,7 @@ states:
             url: >-
               https://github.com/janus-idp/software-templates/tree/main/skeletons/catalog-info
             values:
-              githubOrg: .githubOrg
+              orgName: .orgName
               repoName: .repoName
               owner: .owner
               system: .system
@@ -162,7 +162,7 @@ states:
             allowedHosts:
               - '"github.com"'
             description: Workflow Action
-            repoUrl: '"github.com?owner=" + .githubOrg + "&repo=" + .repoName'
+            repoUrl: '"github.com?owner=" + .orgName + "&repo=" + .repoName'
             defaultBranch: main
             gitCommitMessage: Initial commit
             allowAutoMerge: true
