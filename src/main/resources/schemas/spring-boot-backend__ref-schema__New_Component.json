@@ -33,7 +33,7 @@
       "title": "Port",
       "description": "Override the port exposed for the application",
       "type": "number",
-      "default": "8080"
+      "default": 8080
     }
   },
   "required": [
