@@ -22,7 +22,8 @@
     "system": {
       "title": "System",
       "description": "An entity from the catalog",
-      "type": "string"
+      "type": "string",
+      "default": "system:janus-idp"
     }
   },
   "required": ["githubOrg", "owner", "repoName", "system"]
