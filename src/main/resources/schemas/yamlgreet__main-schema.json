@@ -7,10 +7,7 @@
     "language": {
       "title": "Language",
       "description": "Language to greet",
-      "enum": [
-        "English",
-        "Spanish"
-      ],
+      "enum": ["English", "Spanish"],
       "default": "English"
     },
     "name": {
@@ -19,5 +16,6 @@
       "type": "string",
       "default": "John Doe"
     }
-  }
+  },
+  "required": ["name"]
 }
