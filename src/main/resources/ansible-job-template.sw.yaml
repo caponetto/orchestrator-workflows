@@ -32,7 +32,7 @@ states:
               arguments:
                 id: $WORKFLOW.instanceId
                 url: >-
-                  https://github.com/janus-idp/software-templates/tree/main/templates/github/launch-ansible-job/skeleton
+                  https://github.com/redhat-developer/red-hat-developer-hub-software-templates/tree/main/templates/github/launch-ansible-job/skeleton
                 values:
                   name: ${.ansibleJobDefinition.name}
                   jobTemplate: ${.ansibleJobDefinition.jobTemplate}
@@ -48,7 +48,7 @@ states:
               arguments:
                 id: $WORKFLOW.instanceId
                 url: >-
-                  https://github.com/janus-idp/software-templates/tree/main/skeletons/catalog-info
+                  https://github.com/redhat-developer/red-hat-developer-hub-software-templates/tree/main/skeletons/catalog-info
                 values:
                   githubOrg: ${.repositoryInfo.githubOrg}
                   repoName: ${.repositoryInfo.repoName}
