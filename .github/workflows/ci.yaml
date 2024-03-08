@@ -5,7 +5,9 @@ on:
     branches: [main]
   pull_request:
     branches: ["**"]
-    types: [opened, reopened, ready_for_review, synchronize]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 10 * * *" # 10am UTC everyday
 
 concurrency:
   group: ${{ github.event.pull_request && format('ci-pr-{0}', github.event.pull_request.number) || format('ci-push-main-{0}', github.sha) }}
@@ -48,6 +50,7 @@ jobs:
             ./src/main/docker/Dockerfile.jvm
 
       - name: "Push To quay.io"
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
         id: push-to-quay
         uses: redhat-actions/push-to-registry@v2
         with:
@@ -58,6 +61,7 @@ jobs:
           password: "${{ secrets.QUAY_PASSWORD }}"
 
       - name: "Print image names"
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
         run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
 
       - name: "Add comment to the PR"
