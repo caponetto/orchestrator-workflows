@@ -7,7 +7,7 @@ on:
     branches: ["**"]
   workflow_dispatch:
   schedule:
-    - cron: "0 10 * * *" # 10am UTC everyday
+    - cron: "0 7 * * *" # 7am UTC everyday
 
 concurrency:
   group: ${{ github.event.pull_request && format('ci-pr-{0}', github.event.pull_request.number) || format('ci-push-main-{0}', github.sha) }}
